@@ -120,13 +120,17 @@ def compute_total_cost(L, I, p, ndec, ntsteps=0):
 
 def descending_interest_method(L0, I, p0, a0, ndec):
     """ This function will return the total cost using the method of
-        paying off loans in order descending interest.
+        paying off loans in order of descending interest.
     """
     
     # NOTES:
     #
     # [1/21/19]
     # After each payoff, leftover is applied to next iteration.
+    # Payment is kept constant at every iteration, save any leftover from
+    # previous iteration. So, even after a loan is paid off, the code
+    # continues to use that loans minimum payment to pay off
+    # remaining loans.
     
     # Test if all values of I are equal
     if (I == np.roll(I,1)).sum() == I.shape[0]:
@@ -194,6 +198,11 @@ def gradient_descent_algo1(L0, I, p0, a, max_iters, x = 0.01):
     # iterates. At the end of iterations, you're left with an array that 
     # contains the "optimal" fractions (called weights in output) of "a" 
     # to apply to each of the loans.
+    # [5/17/20] Like "descending_interest_method" function...
+    # Payment is kept constant at every iteration, save any leftover from
+    # previous iteration. So, even after a loan is paid off, the code
+    # continues to use that loan's minimum payment to pay off
+    # remaining loans.
     
     # INPUTS:
     # L0        -> The initial principal loan amount [numpy 1D array]
@@ -259,7 +268,9 @@ def optimize_algo1(L0, I, p, a0, max_iters, ndec, x = 0.01):
     # and # of timesteps (n). These are the timesteps required to payoff
     # each of the input loans. The total cost is computed by paying all
     # loans to n.min() timesteps. Unless every element of n is the same,
-    # you'll still have remaining debt to pay off. 
+    # you'll still have remaining debt to pay off. Therefore 
+    # "gradient_descent_algo1" is called iteratively in a 'while' loop 
+    # until the principle of all remaining loans goes to zero. 
     
     # INPUTS:
     # L0        -> The initial principal loan amount [numpy 1D array]
