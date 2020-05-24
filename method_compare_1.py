@@ -1,15 +1,19 @@
-""" The point of this code is to prove that the descending interest method
-    is not always the optimal method.
-"""
+""" 
 
-# Initial principal vs. Total cost
-#
-# 2 Lines:
-# - descending interest
-# - gradient descent
-#
-# 2 static loans, 1 dynamic
-# dynamic loan add increasing amounts from 0 to x
+The point of this code is to prove that the descending interest method
+is not always the optimal method.
+
+The code computes the grand total cost of using the "gradient descent"
+method and the "descending interest" method to pay 2 loans, assuming there
+are $100 to apply above the loans' minimum payment.
+
+The starting principal of loan X varies. It varies from being equal to the
+other loan's starting principal to + $10000 greater. All other parameters
+are held constant: the interests, the length (term), the extra money (a).
+
+Each variation of loan X's principal yeilds a different total cost.
+
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,7 +22,7 @@ import pdb
 
 # Interests
 I1 = 0.35/12.0
-Ix = 0.55/12.0#0.10/12.0
+Ix = 0.10/12.0
 
 # Term of loans (# of timesteps)
 # x loan's min payment will be computed within loop
