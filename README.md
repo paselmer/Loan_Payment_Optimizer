@@ -29,6 +29,7 @@ method, which I hypothesized would, at least some of the time, result in
 a lower total cost paid.
 
 I put the hypothesis to the test in two separate ways:
+
 1 - By running a bunch of debt scenarios through each of the algorithms.
 2 - By a simple plot made varying only one loan parameter for a two-loan scenario.
 
