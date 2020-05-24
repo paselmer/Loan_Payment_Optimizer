@@ -193,7 +193,7 @@ def gradient_descent_algo1(L0, I, p0, a, max_iters, x = 0.01):
     # payment (a) to each loan. Let's call this loan the "winner."
     # At the end of each iteration, the winner's payment amount is increased
     # by x (fraction of 1, input, defined below). The next iteration begins. 
-    # Iterations continue until 100% of "a" (input, defined) below is allocated. 
+    # Iterations continue until 100% of "a" (input, defined below) is allocated. 
     # The winner will sometimes change as the payments change, as the code 
     # iterates. At the end of iterations, you're left with an array that 
     # contains the "optimal" fractions (called weights in output) of "a" 
