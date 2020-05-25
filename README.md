@@ -28,19 +28,20 @@ The "gradient descent" method was a competitor for the "descending interest
 method, which I hypothesized would, at least some of the time, result in
 a lower total cost paid.
 
-I put the hypothesis to the test in two separate ways:
-
-1 - By running a bunch of debt scenarios through each of the algorithms.
+I put the hypothesis to the test in two separate ways:  
+1 - By running a bunch of debt scenarios through each of the algorithms.  
 2 - By a simple plot made varying only one loan parameter for a two-loan scenario.
 
-The bottom line is the descending interest method is not always optimal.
-Although I do think it's a good rule of thumb.
+The bottom line is the descending interest method is not always optimal,
+although I do think it's a good rule of thumb.
 
 To see the results of _1_, see README.md in the _loan_function_test_1_in4_
 sub-directory.
 
 The results of _2_ are shown below. Please look at the simple code
 _method_compare_1.py_ to see what I did.
+
+![Method Compare][method_compare_1.png]
 
 
 ## System requirements:

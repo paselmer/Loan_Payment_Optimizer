@@ -10,8 +10,12 @@ are $100 to apply above the loans' minimum payment.
 The starting principal of loan X varies. It varies from being equal to the
 other loan's starting principal to + $10000 greater. All other parameters
 are held constant: the interests, the length (term), the extra money (a).
+NOTE though, that the changing the starting principal changes the minimum
+payment as per the "present value" equation used in creating amortized loans.
 
 Each variation of loan X's principal yeilds a different total cost.
+The total cost as a function of difference in starting principal is plotted
+to compare methods.
 
 """
 
@@ -56,13 +60,16 @@ for Lx in L0x:
 Tgd = np.array(Tgd)
 Tdi = np.array(Tdi)
 
-fig, ax = plt.subplots(1,1,figsize=(9,6))
-ax.plot(dL0,Tgd,color='orange',label='gradient descent')
-ax.plot(dL0,Tdi,color='green',label='descending interest')
-ax.legend()
-ax.set_xlabel('difference between loan principals')
-ax.set_ylabel('total amount paid')
+fig, ax = plt.subplots(2,1,figsize=(9,9),sharex=True)
+ax[0].plot(dL0,Tgd,color='orange',label='gradient descent')
+ax[0].plot(dL0,Tdi,color='green',label='descending interest')
+ax[0].legend()
+#ax[0].set_xlabel('difference between loan principals ($)')
+ax[0].set_ylabel('total amount paid ($)')
+ax[1].plot(dL0,(Tdi-Tgd),color='blue')
+ax[1].set_xlabel('difference between loan principals ($)')
+ax[1].set_ylabel('difference in total amount paid ($)\n descending interest minus gradient descent')
+fig.suptitle('Comparison of methods using 2-loan scenario, varying only the starting\n principal of one of the loans.')
 plt.show()
-pdb.set_trace()
 
 
