@@ -41,7 +41,7 @@ sub-directory.
 The results of _2_ are shown below. Please look at the simple code
 _method_compare_1.py_ to see what I did.
 
-![Method Compare][method_compare_1.png]
+![Method Compare](method_compare_1.png)
 
 
 ## System requirements:
