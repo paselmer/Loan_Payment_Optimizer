@@ -59,7 +59,7 @@ money you would save using the same x-axis.
 
 Granted, I picked a case where I knew the gradient descent method would win.
 But the point is that the descending interest method is not always optimal
-is you are trying to reduce your total cost paid.
+if you are trying to reduce your total cost paid.
 
 If you look at the results of _1_, the many debt scenarios, you'll see that
 the majority of the time the gradient descent outperforms the descending interest
