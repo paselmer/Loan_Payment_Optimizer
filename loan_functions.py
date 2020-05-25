@@ -1,9 +1,9 @@
 import numpy as np
-import pdb
 from itertools import permutations as perm
+import pdb
 
 def compute_present_value(j,I,p):
-    """ Computes Present Value (PV) or an ordinary annuity """
+    """ Computes Present Value (PV) of an ordinary annuity """
     
     # NOTES:
     # Any ONE of the input arguments can be an array, but the others 
@@ -123,6 +123,19 @@ def descending_interest_method(L0, I, p0, a0, ndec):
         paying off loans in order of descending interest.
     """
     
+    # INPUTS:
+    # L0   -> Current inital/principal of the loans [1D array]
+    # I    -> Interest (presumably annual) of the loans [1D array]
+    # p    -> The payment at each timestep (presumably monthly) [1D array]
+    # a0   -> The extra money available each month to put towards max(I) loan (scalar)
+    # ndec -> The number of decimal places to round to - presumably 2, cuz money. (scalar)
+    
+    # OUTPUTS:
+    # (all scalars)
+    # grand_total -> The total cost of paying off all loans to a balance of
+    #                zero using this method.
+    # tsteps      -> The number of timesteps taken to pay off all loans.
+    
     # NOTES:
     #
     # [1/21/19]
@@ -158,8 +171,6 @@ def descending_interest_method(L0, I, p0, a0, ndec):
         a[maxI_indx] = a0 + leftover + p0[payedoff_mask].sum()
         leftover = 0.0
         L = np.round( L + np.round(L*I,ndec) - (p + a), ndec )
-        #print('sum = ',(p0).sum()+p)
-        #print('L= ',L,maxI_indx)
         payedoff_mask = L <= 0.0
         if payedoff_mask.sum() > 0:
             leftover = np.abs(L[payedoff_mask].sum())
@@ -167,10 +178,6 @@ def descending_interest_method(L0, I, p0, a0, ndec):
             p[payedoff_mask] = 0.0
             L[payedoff_mask] = 0.0
         total = total + p0.sum() + a0
-        #print('iter: ',tsteps)
-        #print('a= ',a)
-        #print(payedoff_mask)
-        #pdb.set_trace()
         rem = L.sum()
         tsteps += 1
         
@@ -183,7 +190,7 @@ def gradient_descent_algo1(L0, I, p0, a, max_iters, x = 0.01):
     """ This algorithm determines the weights and the grand total of 
         applying those weights to an amount, a, over the minimum payment
         of an arbitrary number of fixed interest annuities (loans).
-        The way the weights are determined are described in the DESCRIPTION
+        The way the weights are determined is described in the DESCRIPTION
         below.
     """
     
@@ -268,9 +275,10 @@ def optimize_algo1(L0, I, p, a0, max_iters, ndec, x = 0.01):
     # and # of timesteps (n). These are the timesteps required to payoff
     # each of the input loans. The total cost is computed by paying all
     # loans to n.min() timesteps. Unless every element of n is the same,
-    # you'll still have remaining debt to pay off. Therefore 
-    # "gradient_descent_algo1" is called iteratively in a 'while' loop 
-    # until the principle of all remaining loans goes to zero. 
+    # you'll have a new set of loans to optimize paying off, each time you
+    # you reach the next highest n. Therefore "gradient_descent_algo1"
+    # is called iteratively in a 'while' loop until the principal
+    # of all remaining loans goes to zero. 
     
     # INPUTS:
     # L0        -> The initial principal loan amount [numpy 1D array]
@@ -313,9 +321,8 @@ def optimize_algo1(L0, I, p, a0, max_iters, ndec, x = 0.01):
         #print("This many L remain: ",L.shape)
         
         # IF the remainder to be paid on all loans is less than leftover,
-        # or the minimum payments, then quit. But be sure to increase  I
-        # loans by 1 ts worth of before making this comparison.
-        # Do this--> L = np.round( L + np.round(L*I,ndec) - p, ndec )
+        # or the minimum payments, then quit. But be sure to increase
+        # loans by 1 ts worth of I before making this comparison.
         L_nts = np.round( L + np.round(L*I,ndec), ndec)
         if (L_nts.sum() < a) | ((L_nts >= p).sum() == 0):
             # First subtract the minimum payments from the remaining loan
@@ -339,9 +346,6 @@ def optimize_algo1(L0, I, p, a0, max_iters, ndec, x = 0.01):
         all_ntsteps.append(ntsteps)
         tot_ts = tot_ts + ntsteps
         all_w.append(w)
-        #print(w)
-        #print(n)
-        #print('a : ',a)
         
         for i in range(0,nloans_toploop):
             tot, ts, Lout = compute_total_cost(L[i], I[i], p[i]+a*w[i], ndec, ntsteps)
@@ -349,15 +353,13 @@ def optimize_algo1(L0, I, p, a0, max_iters, ndec, x = 0.01):
             L[i] = Lout
         
         mask = L >= 0
-        # Put a patch in here so that if every value in L is <= 0, mask.sum() == 0
+        # Put a patch in here so that if every value in L is <= 0, mask.sum() == 0.
+        # This will terminate while loop once it gets back to top.
         if (L > 0).sum() == 0: 
             mask = np.zeros(mask.shape,dtype=np.bool)
         invmask = L < 0
         leftover = np.abs(L[invmask]).sum()
         a = p[invmask].sum() + a0 + leftover # keeps total payment amount constant
-        #print('******************************\n')
-        #print(L,'\n',leftover)
-        #print('******************************\n')
     
     # Compute cost of paying off rest of the remaining loan, if applicable 
     if mask.sum() > 0:
@@ -370,9 +372,8 @@ def optimize_algo1(L0, I, p, a0, max_iters, ndec, x = 0.01):
         all_ntsteps.append(ts)
         all_w.append(1.0)
     else:
-        #print('All loans must have been paid off in same # of timesteps')
-        #print('Timesteps: ',n)
-        #print('Weights: ',w)
+        # At least some of the loans must've been paid off in same number
+        # of times steps.
         tot_all = tot_all - leftover
 
     return tot_all, tot_ts, all_w, all_ntsteps
@@ -423,6 +424,10 @@ def gradient_descent_algo2(L0, I, p, a, n, m):
     # grand_total_paid -> the resultant grand totals paid, corresponding to w [numpy array]    
     
     # Google: partitions, compositions, number theory, combinatorics
+    #
+    # NOTES:
+    # [5/25/20]
+    # Code abandoned indefinitely because it takes a long time to run.
     
     nL = L0.shape[0]
     
@@ -484,49 +489,3 @@ def gradient_descent_algo2(L0, I, p, a, n, m):
     n_pay = np.array(n_of_low_costs)
     grand_total_paid = np.array(m_lowest_costs)       
     return w, n_pay, grand_total_paid
-    
-    
-    
-    
-    
-def brute_force_minimizer(L0, I, p, a, set_sum, min_cost):
-    """ This function will try nearly all combinations of amount 
-        apportionments and return the combination that minimizes the
-        total cost over the lifetime of all annuities (loans).
-    """
-    
-    cost = []
-    
-    for i in range(0,set_sum+1):
-        for j in range(0,set_sum+1):
-            for k in range(0,set_sum+1):
-                if (i+j+k) == set_sum:
-                    ifl = float(i)/set_sum
-                    jfl = float(j)/set_sum
-                    kfl = float(k)/set_sum
-                    pmod0 = p[0]+ifl*a
-                    pmod1 = p[1]+jfl*a
-                    pmod2 = p[2]+kfl*a
-                    n0 = compute_n_payments(L0[0], I[0], pmod0)
-                    n1 = compute_n_payments(L0[1], I[1], pmod1)
-                    n2 = compute_n_payments(L0[2], I[2], pmod2)
-                    total_spent = pmod0*n0 + pmod1*n1 + pmod2*n2
-                    cost.append(total_spent)
-                    if total_spent < min_cost:
-                        isave = i
-                        jsave = j
-                        ksave = k
-                        n0save = n0
-                        n1save = n1
-                        n2save = n2
-                        min_cost = total_spent
-    
-    iportion = (isave/set_sum)*a
-    jportion = (jsave/set_sum)*a
-    kportion = (ksave/set_sum)*a
-    
-    ans_list = [iportion, jportion, kportion, n0, n1, n2]
-    
-    return np.asarray(cost), min_cost, ans_list
-    
-        
