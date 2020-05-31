@@ -73,3 +73,6 @@ method, and in cases where it does not, it doesn't "lose" by much.
 [1] https://www.khanacademy.org/college-careers-more/personal-finance/pf-interest-and-debt/debt-repayment/v/high-rate-vs-snowball-method
 
 ## Notes:
+
+{30 May 2020}
+Work on/finesse output of analyze_results.py
