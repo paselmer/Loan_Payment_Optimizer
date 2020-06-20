@@ -1,0 +1,8 @@
+% wins:        84.30
+% losses:      15.70
+mean win ($):  -2052.71
+mean loss ($): 261.62
+max win ($):   -19637.97
+max loss ($):  7223.13
+min win ($):   -0.00
+min loss ($):   0.00

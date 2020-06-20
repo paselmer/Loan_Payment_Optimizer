@@ -8,9 +8,10 @@
 3. If the total cost using "gradient descent" was less than that of "descending
 interest" then this was considered a "win." Otherwise it was considered a "loss."
 4. The scenarios were partitioned into 4 separate codes that could be run
-simultaneously.
-5. A crude form a parallel processing.
-6. This was done out of laziness for not taking the time to actually learn
-how to parallel process in Python.
+simultaneously - a crude form a parallel processing.
 
 # Summary of test results
+DEFINITION:
+_margin = (total cost of debt using gradient descent method) - (total cost of debt using descending interest method)_
+
+With the above definition in mind, look the plotted summary of results below.
