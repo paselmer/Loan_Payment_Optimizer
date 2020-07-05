@@ -20,7 +20,7 @@ I wanted to test to see if the descending interest method was always optimal.
 To test this hypothesis, I coded up a simple algorithm I call the "gradient
 descent" method. It operates on a set of loans by seeing which loan's
 total cost (the interest + principal you pay over life of the loan) is
-reduced the most by applying an absolute amount of money over the fixed
+reduced the most by applying a fixed amount of money over the fixed
 minimum payment. You can read more about the function in its comments
 within the _loan_function.py_ file.
 
