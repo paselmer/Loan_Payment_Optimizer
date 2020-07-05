@@ -15,3 +15,18 @@ DEFINITION:
 _margin = (total cost of debt using gradient descent method) - (total cost of debt using descending interest method)_
 
 With the above definition in mind, look the plotted summary of results below.
+
+![Margin win or loss histograms](margins_histogram.png)
+
+In the left histogram, the negative number means that the gradient descent method's total cost was that much lower than the descending interested method. In the right histogram, the gradient descent's total cost was that much higher.
+
+Here are some basic stats to go with this histogram...
+
+% wins:        84.30
+% losses:      15.70
+mean win ($):  -2052.71
+mean loss ($): 261.62
+max win ($):   -19637.97
+max loss ($):  7223.13
+min win ($):   -0.00
+min loss ($):   0.00
