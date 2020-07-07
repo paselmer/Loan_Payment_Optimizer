@@ -14,7 +14,7 @@ simultaneously - a crude form a parallel processing.
 DEFINITION:
 _margin = (total cost of debt using gradient descent method) - (total cost of debt using descending interest method)_
 
-With the above definition in mind, look the plotted summary of results below.
+With the above definition in mind, look at the plotted summary of results below.
 
 ![Margin win or loss histograms](margins_histogram.png)
 
