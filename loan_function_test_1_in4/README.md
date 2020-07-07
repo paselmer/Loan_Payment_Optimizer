@@ -31,4 +31,4 @@ max loss ($):  7223.13<br/>
 min win ($):   -0.00<br/>
 min loss ($):   0.00<br/>
 
-In the scenarios that gradient descent method does worse, I've anecdotally noticed that one loan has much greater starting principal and much greater starting interest than the other loans. But I haven't performed analysis on these "loss" cases to verify that claim.
+In the scenarios that gradient descent method does worse, I've anecdotally noticed that one loan has much greater starting principal and much greater interest than the other loans. But I haven't performed analysis on these "loss" cases to verify that claim.
