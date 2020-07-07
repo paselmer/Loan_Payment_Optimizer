@@ -22,7 +22,7 @@ In the left histogram, the negative number means that the gradient descent metho
 
 Here are some basic stats to go with this histogram...
 
-% wins:        84.30
+% wins:        84.30<br/>
 % losses:      15.70
 mean win ($):  -2052.71
 mean loss ($): 261.62
