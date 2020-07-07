@@ -18,15 +18,17 @@ With the above definition in mind, look the plotted summary of results below.
 
 ![Margin win or loss histograms](margins_histogram.png)
 
-In the left histogram, the negative number means that the gradient descent method's total cost was that much lower than the descending interested method. In the right histogram, the gradient descent's total cost was that much higher.
+In the left histogram, the negative number means that the gradient descent method's total cost was that much lower than the descending interested method. In the right histogram, the gradient descent's total cost was that much higher. Said another way - the left histogram tells you how much money you saved, the right tells you how much you lost. Overall, the gradient descent method is better.
 
 Here are some basic stats to go with this histogram...
 
 % wins:        84.30<br/>
-% losses:      15.70
-mean win ($):  -2052.71
-mean loss ($): 261.62
-max win ($):   -19637.97
-max loss ($):  7223.13
-min win ($):   -0.00
-min loss ($):   0.00
+% losses:      15.70<br/>
+mean win ($):  -2052.71<br/>
+mean loss ($): 261.62<br/>
+max win ($):   -19637.97<br/>
+max loss ($):  7223.13<br/>
+min win ($):   -0.00<br/>
+min loss ($):   0.00<br/>
+
+In the scenarios that gradient descent method does worse, I've anecdotally noticed that one loan has much greater starting principal and much greater starting interest than the other loans. But I haven't performed analysis on these "loss" cases to verify that claim.
