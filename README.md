@@ -1,7 +1,7 @@
 # Loan_Payment_Optimizer
 
 ## Descripton:
-Python code to determine how to allocate extra money to pay off debt faster.
+Python code to determine how to allocate extra money to minimize the total cost paid on debt in the form of ammortized loans.
 
 ## Basic explanation:
 
