@@ -3,13 +3,13 @@
 ## Descripton:
 Python code to determine how to allocate extra money to minimize the total cost paid on debt in the form of amortized loans.
 
-## Basic explanation:
+## Brief explanation:
 
 You have a bunch of debts. They are probably in the form of loans paid off
-in installments over time. These are know as amortized loans.
+in installments over time. These are known as amortized loans.
 
-Examples of amortized loans include credit card debts, mortgages, 
-and student loans.
+Examples of amortized loans include student loans, mortgages, 
+and credit card debts.
 
 The mantra I've seen over and over again, is that the optimal way to pay
 off these debts is something called the "higher rate" or "descending interest" 
@@ -18,15 +18,15 @@ lowest [1].
 
 I wanted to test to see if the descending interest method was always optimal.
 To test this hypothesis, I coded up a simple algorithm I call the "gradient
-descent" method. It operates on a set of loans by seeing which loan's
-total cost (the interest + principal you pay over life of the loan) is
+descent" method which I thought might be a worthy competitor. It operates on a 
+set of loans by seeing which loan's total cost (the interest + principal you pay over life of the loan) is
 reduced the most by applying a fixed amount of money over the fixed
 minimum payment. You can read more about the function in its comments
 within the _loan_function.py_ file.
 
 The "gradient descent" method was a competitor for the "descending interest"
-method, which I hypothesized would, at least some of the time, result in
-a lower total cost paid.
+method, which I hypothesized would result in
+a lower total cost paid in at least some cases.
 
 I put the hypothesis to the test in two separate ways:  
 _1_ - By running a bunch of debt scenarios through each of the algorithms.  
@@ -39,7 +39,7 @@ To see the results of _1_, see README.md in the _loan_function_test_1_in4_
 sub-directory.
 
 The results of _2_ are shown below. Please look at the simple code
-_method_compare_1.py_ to see what I did.
+_method_compare_1.py_ to see how I made these plots.
 
 ![Method Compare](method_compare_1.png)
 
@@ -48,7 +48,7 @@ paid over the life of two loans assuming the following...
 1. The annual interest of _loan A_ is 35%.
 2. The annual interest of _loan B_ is 10%.
 3. The term of both loans is 100 months.
-4. The amount of money to allocate (as determined by each method) to apply above the minimum payments is $100.
+4. The TOTAL amount of money applied above the minimum payments is $100. **The way this $100 is split between Loans A & B is what is determined by each of the two algorithms.**
 5. The starting principal of _loan A_ is $500.
 6. The starting principal of loan B varies. It varies from being equal to loan A's
 starting principal to + $10000 greater.
@@ -74,5 +74,5 @@ method, and in cases where it does not, it doesn't "lose" by much.
 
 ## Notes:
 
-{30 May 2020}
-Work on/finesse output of analyze_results.py
+{17 Aug 2020}
+First draft complete.
