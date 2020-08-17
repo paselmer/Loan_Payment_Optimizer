@@ -45,12 +45,12 @@ _method_compare_1.py_ to see how I made these plots.
 
 The figure above shows how the gradient descent method reduces the total cost 
 paid over the life of two loans assuming the following...  
-1. The annual interest of _loan A_ is 35%.
-2. The annual interest of _loan B_ is 10%.
+1. The annual interest of _Loan A_ is 35%.
+2. The annual interest of _Loan B_ is 10%.
 3. The term of both loans is 100 months.
 4. The TOTAL amount of money applied above the minimum payments is $100. **The way this $100 is split between Loans A & B is what is determined by each of the two algorithms.**
-5. The starting principal of _loan A_ is $500.
-6. The starting principal of loan B varies. It varies from being equal to loan A's
+5. The starting principal of _Loan A_ is $500.
+6. The starting principal of _Loan B_ varies. It varies from being equal to _Loan A's_
 starting principal to + $10000 greater.
 
 The top plot in the figure compares the total cost of the two methods as a function
