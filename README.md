@@ -73,9 +73,9 @@ method, and in cases where it does not, it doesn't "lose" by much.
 
 ## Notes:
 
-{17 Aug 2020}
+{17 Aug 2020}</br>
 First draft complete.
 
-{09 Sep 2020}
+{09 Sep 2020}</br>
 Considering the time value of money is beyond the scope of this project. For example, it could sometimes be better to
 put some extra money towards high-return investments rather than paying off some debts.
