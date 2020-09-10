@@ -14,7 +14,7 @@ and credit card debts.
 The mantra I've seen over and over again, is that the optimal way to pay
 off these debts is something called the "higher rate" or "descending interest" 
 method by which you pay off your debts by interest rate from highest to
-lowest [1].
+lowest [1][2].
 
 I wanted to test to see if the descending interest method was always optimal.
 To test this hypothesis, I coded up a simple algorithm I call the "gradient
@@ -70,6 +70,7 @@ method, and in cases where it does not, it doesn't "lose" by much.
 
 ## References:
 [1] https://www.khanacademy.org/college-careers-more/personal-finance/pf-interest-and-debt/debt-repayment/v/high-rate-vs-snowball-method
+[2] https://www.reddit.com/r/personalfinance/comments/zzoxu/calculator_to_optimize_loan_payoff/ {last accessed 9/9/20}
 
 ## Notes:
 
