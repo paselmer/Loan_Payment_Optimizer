@@ -69,7 +69,7 @@ method, and in cases where it does not, it doesn't "lose" by much.
 - No obscure Python libraries required. 
 
 ## References:
-[1] https://www.khanacademy.org/college-careers-more/personal-finance/pf-interest-and-debt/debt-repayment/v/high-rate-vs-snowball-method
+[1] https://www.khanacademy.org/college-careers-more/personal-finance/pf-interest-and-debt/debt-repayment/v/high-rate-vs-snowball-method</br>
 [2] https://www.reddit.com/r/personalfinance/comments/zzoxu/calculator_to_optimize_loan_payoff/ {last accessed 9/9/20}
 
 ## Notes:
