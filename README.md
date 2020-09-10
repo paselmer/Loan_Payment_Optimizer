@@ -5,7 +5,7 @@ Python code to determine how to allocate extra money to minimize the total cost 
 
 ## Brief explanation:
 
-You have a bunch of debts. They are probably in the form of loans paid off
+Let's say you have a bunch of debts. They are probably in the form of loans paid off
 in installments over time. These are known as amortized loans.
 
 Examples of amortized loans include student loans, mortgages, 
@@ -24,9 +24,8 @@ reduced the most by applying a fixed amount of money over the fixed
 minimum payment. You can read more about the function in its comments
 within the _loan_function.py_ file.
 
-The "gradient descent" method was a competitor for the "descending interest"
-method, which I hypothesized would result in
-a lower total cost paid in at least some cases.
+I hypothesized that the "gradient descent" method would result in a lower total cost
+paid in at least some scenarios, compared to the "descending interest" method.
 
 I put the hypothesis to the test in two separate ways:  
 _1_ - By running a bunch of debt scenarios through each of the algorithms.  
@@ -48,13 +47,13 @@ paid over the life of two loans assuming the following...
 1. The annual interest of _Loan A_ is 35%.
 2. The annual interest of _Loan B_ is 10%.
 3. The term of both loans is 100 months.
-4. The TOTAL amount of money applied above the minimum payments is $100. **The way this $100 is split between Loans A & B is what is determined by each of the two algorithms.**
+4. The TOTAL amount of money applied above the minimum payments is $100. **The way this $100 is split between Loans A & B is what is determined by the gradient descent algorithm.** The descending interest algorithm ALWAYS applies the $100 to the loan with the higher interest rate until it's paid off.
 5. The starting principal of _Loan A_ is $500.
 6. The starting principal of _Loan B_ varies. It varies from being equal to _Loan A's_
 starting principal to + $10000 greater.
 
 The top plot in the figure compares the total cost of the two methods as a function
-of the increases in loan B's starting principal. The bottom plot explicitly shows how much
+of the increases in _Loan B's_ starting principal. The bottom plot explicitly shows how much
 money you would save using the same x-axis.
 
 Granted, I picked a case where I knew the gradient descent method would win.
@@ -76,3 +75,7 @@ method, and in cases where it does not, it doesn't "lose" by much.
 
 {17 Aug 2020}
 First draft complete.
+
+{09 Sep 2020}
+Considering the time value of money is beyond the scope of this project. For example, it could sometimes be better to
+put some extra money towards high-return investments rather than paying off some debts.
